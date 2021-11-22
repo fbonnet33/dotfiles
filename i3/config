@@ -4,10 +4,19 @@
 # Mod key
 set $mod Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+## Comment if not using i3w-gaps
+for_window [class=".$"] border pixel 2
+smart_gaps on
+smart_borders on
+gaps inner 9
+gaps outer 1
+
+
+# Font 
 font pango:monospace 8
 
+# wallpaper
+exec --no-startup-id feh --bg-scale ~/dotfiles/wallpaper.jpg
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -44,21 +53,13 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show run
 # There also is i3-dmenu-desktop which only displays applications shipping a
 
 
-# Comment if not using i3w-gaps
-for_window [class=".$"] border pixel 2
-smart_gaps on
-gaps inner 9
-gaps outer 1
-smart_borders on
-#workspace 1 gaps right 300
+workspace 1 gaps right 300
 
 client.focused #00ff00 #8f0000 #0000ff #800080
 client.focused_inactive #2C2C2C #2C2C2C #ffffff #2C2C2C
 client.unfocused #4c566a #434c5e #3b4252 #2e3440
 client.urgent #cc4380 #d668c2 #e55bb7 #f767eb
 
-# wallpaper
-exec --no-startup-id feh --bg-scale ~/Images/wallpaper.jpg
 exec --no-startup-id teams
 
 # change focus
