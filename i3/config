@@ -18,10 +18,35 @@ font pango:monospace 8
 # wallpaper
 exec --no-startup-id feh --bg-scale ~/dotfiles/wallpaper.jpg
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+## Picom (display compositor)
+## TODO can start picom
+## exec_always --no-startup-id picom --experimental-backends --config ~/dotfiles/picom.conf
+
+
+# Polybar
+# TODO add config.ini files in polybar/slanted-colorblocks
+#exec_always --no-startup-id ~/dotfiles/polybar/launch.sh &
+
+# Monitor
+exec_always --no-startup-id /usr/bin/xrandr --output HDMI-2 --left-of eDP-1
+
+# ntpd
+exec_always --no-startup-id /usr/bin/ntpd -qg
+
+## start a terminal
+bindsym $mod+Return exec kitty -c ~/dotfiles/kitty/kitty.conf
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Launcher
+bindsym $mod+d exec --no-startup-id dmenu_run
+#bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/dotfiles/rofi/everforest.rasi
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+
+ exec --no-startup-id xxss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec_always --no-startup-id /usr/bin/xrandr --output HDMI-2 --left-of eDP-1
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -37,16 +62,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec kitty -c /home/brice/.config/kitty/kitty.conf
 
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+Shift+d exec --no-startup-id rofi -show run
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
