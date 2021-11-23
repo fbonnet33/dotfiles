@@ -25,7 +25,7 @@ exec_always --no-startup-id picom --experimental-backends --config ~/dotfiles/pi
 
 # Polybar
 # TODO add config.ini files in polybar/slanted-colorblocks
-#exec_always --no-startup-id ~/dotfiles/polybar/launch.sh &
+exec_always --no-startup-id ~/dotfiles/polybar/launch.sh &
 
 # Monitor
 exec_always --no-startup-id /usr/bin/xrandr --output HDMI-2 --left-of eDP-1
@@ -221,4 +221,5 @@ mode "system" {
 
 bindsym $mod+Shift+s mode "system"
 
-
+bindsym Mod4+l exec i3lock -c 000000
+bindsym $mod+Tab move workspace to output right

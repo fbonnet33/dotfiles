@@ -11,7 +11,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 #done
 
 for m in `xrandr --query | grep " connected"|cut -d " " -f1`; do
-    MONITOR="$m" polybar -c ~/dotfiles/polybar/custom/config.ini main &
+    MONITOR="$m" polybar -c ~/dotfiles/polybar/slanted-colorblocks/config.ini main &
 done
 
 
