@@ -2,10 +2,10 @@
 # ln -s [THISFILE] ~/.config/i3/config
 
 # Mod key
-set $mod Mod1
+set $mod Mod4
 
 ## Comment if not using i3w-gaps
-for_window [class=".$"] border pixel 2
+for_window [class=".$"] border pixel 5
 smart_gaps on
 smart_borders on
 gaps inner 9
@@ -19,16 +19,17 @@ font pango:monospace 8
 exec --no-startup-id feh --bg-scale ~/dotfiles/wallpaper.jpg
 
 ## Picom (display compositor)
-## TODO can start picom
-exec_always --no-startup-id picom --experimental-backends --config ~/dotfiles/picom.conf
+# exec_always --no-startup-id picom --experimental-backends --config ~/dotfiles/picom.conf
 
 
 # Polybar
-# TODO add config.ini files in polybar/slanted-colorblocks
 exec_always --no-startup-id ~/dotfiles/polybar/launch.sh &
 
 # Monitor
 exec_always --no-startup-id /usr/bin/xrandr --output HDMI-2 --left-of eDP-1
+#exec_always --no-startup-id /usr/bin/xrandr --output HDMI-2 --off
+#exec_always --no-startup-id /usr/bin/xrandr --output HDMI-2 --auto
+#exec_always --no-startup-id /usr/bin/xrandr --output HDMI-2 --right-of eDP-1
 
 # ntpd
 exec_always --no-startup-id /usr/bin/ntpd -qg
@@ -69,14 +70,14 @@ floating_modifier $mod
 # There also is i3-dmenu-desktop which only displays applications shipping a
 
 
-workspace 1 gaps right 300
+# workspace 1 gaps right 300
 
 client.focused #00ff00 #8f0000 #0000ff #800080
 client.focused_inactive #2C2C2C #2C2C2C #ffffff #2C2C2C
 client.unfocused #4c566a #434c5e #3b4252 #2e3440
 client.urgent #cc4380 #d668c2 #e55bb7 #f767eb
 
-exec --no-startup-id teams
+exec --no-startup-id teams --no-sandbox
 
 # change focus
 bindsym $mod+h focus left
@@ -85,10 +86,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -221,5 +222,6 @@ mode "system" {
 
 bindsym $mod+Shift+s mode "system"
 
-bindsym Mod4+l exec i3lock -c 000000
+# bindsym Mod4+l exec i3lock -c 000000
 bindsym $mod+Tab move workspace to output right
+bindsym $mod+Shift+m exec /home/brice/install/ledger-live-desktop-2.36.3-linux-x86_64.AppImage
